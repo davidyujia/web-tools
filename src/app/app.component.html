@@ -1,1 +1,21 @@
-ok
+<mat-toolbar>
+  <button mat-icon-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span routerLink="/">Web Tools</span>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #drawer mode="side" opened>
+    <mat-nav-list>
+      <!-- routerLinkActive="mdc-list-item--activated" -->
+      <a mat-list-item routerLinkActive #link1="routerLinkActive" [activated]="link1.isActive"
+        [routerLink]="['/', 'Home']">Home1</a>
+
+      <a mat-list-item routerLinkActive #link2="routerLinkActive" [activated]="link2.isActive"
+        [routerLink]="['/', 'Home2']">Home2</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
