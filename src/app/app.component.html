@@ -1,1 +1,24 @@
-ok
+<mat-toolbar>
+  <!-- <button mat-icon-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button> -->
+  <span routerLink="/">Web Tools</span>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #drawer mode="side" opened>
+    <mat-nav-list>
+      <!-- routerLinkActive="mdc-list-item--activated" -->
+      <h3>Encode/Decode</h3>
+      @for (item of [
+      { route: ['/', 'uri-encode-decode'] , name:'URI'},
+      { route: ['/', 'base64-encode-decode'] , name:'Base64'},
+      ]; track item){
+      <a mat-list-item routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive"
+        [routerLink]="item.route">{{item.name}}</a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
