@@ -3,9 +3,17 @@ mat-toolbar {
 }
 
 mat-sidenav-container {
-  height: calc(100vh - 75px);
+  height: calc(100vh - 64px);
 }
 
 mat-sidenav {
   width: 200px;
+}
+
+mat-nav-list{
+  padding-left: 15px;
+}
+
+mat-sidenav-content {
+  padding-left: 20px;
 }

@@ -1,18 +1,21 @@
 <mat-toolbar>
-  <button mat-icon-button (click)="drawer.toggle()">
+  <!-- <button mat-icon-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
-  </button>
+  </button> -->
   <span routerLink="/">Web Tools</span>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #drawer mode="side" opened>
     <mat-nav-list>
       <!-- routerLinkActive="mdc-list-item--activated" -->
-      <a mat-list-item routerLinkActive #link1="routerLinkActive" [activated]="link1.isActive"
-        [routerLink]="['/', 'Home']">Home1</a>
-
-      <a mat-list-item routerLinkActive #link2="routerLinkActive" [activated]="link2.isActive"
-        [routerLink]="['/', 'Home2']">Home2</a>
+      <h3>Encode/Decode</h3>
+      @for (item of [
+      { route: ['/', 'uri-encode-decode'] , name:'URI'},
+      { route: ['/', 'base64-encode-decode'] , name:'Base64'},
+      ]; track item){
+      <a mat-list-item routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive"
+        [routerLink]="item.route">{{item.name}}</a>
+      }
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

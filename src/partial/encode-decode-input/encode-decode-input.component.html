@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-label>{{decodedTitle}}</mat-label>
+  <textarea matInput [(ngModel)]="decodedValue" (ngModelChange)="onDecodedValueChangeIn($event)" cdkTextareaAutosize
+    cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10"></textarea>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>{{encodedTitle}}</mat-label>
+  <textarea matInput [(ngModel)]="encodedValue" (ngModelChange)="onEncodedValueChangeIn($event)" cdkTextareaAutosize
+    cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10"></textarea>
+</mat-form-field>
