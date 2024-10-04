@@ -12,6 +12,7 @@
       @for (item of [
       { route: ['/', 'uri-encode-decode'] , name:'URI'},
       { route: ['/', 'base64-encode-decode'] , name:'Base64'},
+      { route: ['/', 'sha-encode'] , name:'SHA'},
       ]; track item){
       <a mat-list-item routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive"
         [routerLink]="item.route">{{item.name}}</a>

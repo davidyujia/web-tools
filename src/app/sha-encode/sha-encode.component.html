@@ -1,0 +1,23 @@
+<H1>SHA-1/SHA-256/SHA-384/SHA-512 Encode</H1>
+
+<mat-form-field>
+  <mat-label>Choose an algorithm</mat-label>
+  <mat-select [(value)]="algorithm" (selectionChange)="onDecodedValueChange(decodedValue)">
+    <mat-option value="SHA-1">SHA-1</mat-option>
+    <mat-option value="SHA-256">SHA-256</mat-option>
+    <mat-option value="SHA-384">SHA-384</mat-option>
+    <mat-option value="SHA-512">SHA-512</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>{{decodedTitle}}</mat-label>
+  <textarea matInput [(ngModel)]="decodedValue" (ngModelChange)="onDecodedValueChange($event)" cdkTextareaAutosize
+    cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10"></textarea>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>{{encodedTitle}}</mat-label>
+  <textarea matInput [(ngModel)]="encodedValue" readonly cdkTextareaAutosize cdkAutosizeMinRows="2"
+    cdkAutosizeMaxRows="10"></textarea>
+</mat-form-field>
