@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UriEncodeDecodeComponent } from './uri-encode-decode/uri-encode-decode.component';
 import { Base64EncodeDecodeComponent } from './base64-encode-decode/base64-encode-decode.component';
 import { ShaEncodeComponent } from './sha-encode/sha-encode.component';
+import { BrowserNotificationApiComponent } from './browser-notification-api/browser-notification-api.component';
 
 function titleFormat(s: string): string {
   return s ? `${s} - Web Tools` : 'Web Tools'
@@ -26,6 +27,12 @@ export const routes: Routes = [
     path: 'sha-encode',
     title: titleFormat('SHA-1/SHA-128/SHA-256/SHA-512 Encode'),
     component: ShaEncodeComponent,
+    children: []
+  },
+  {
+    path: 'browser-notification-api',
+    title: titleFormat('Browser Notification API Test'),
+    component: BrowserNotificationApiComponent,
     children: []
   },
   {

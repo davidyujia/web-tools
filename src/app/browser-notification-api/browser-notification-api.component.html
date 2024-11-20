@@ -1,0 +1,78 @@
+<h1>Browser Notification API Test</h1>
+
+<div>
+  Notification API:&nbsp;
+  <b>{{isNotificationApiEnable ? 'ok' : 'not support'}}</b>
+</div>
+
+<div>
+  Notification API Permission:&nbsp;
+  <b>{{notificationApiPermission}}</b>&nbsp;
+  <button mat-mini-fab extended type="button" (click)="check()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+</div>
+
+<div>
+  Notification API Test:&nbsp;
+  <button mat-mini-fab extended type="button" [disabled]="!isNotificationApiEnable || notificationApiPermission == 'denied'"
+    (click)="notificationTest()"><mat-icon>notifications_active</mat-icon></button>
+  <div>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput type="text" [(ngModel)]="title">
+      @if (title) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="title=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Body</mat-label>
+      <input matInput type="text" [(ngModel)]="options.body">
+      @if (options.body) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="options.body=undefined">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Icon URL</mat-label>
+      <input matInput type="text" [(ngModel)]="options.icon">
+      @if (options.icon) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="options.icon=undefined">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Icon URL</mat-label>
+      <input matInput type="text" [(ngModel)]="options.icon">
+      @if (options.icon) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="options.icon=undefined">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Tag</mat-label>
+      <input matInput type="text" [(ngModel)]="options.tag">
+      @if (options.tag) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="options.tag=undefined">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-checkbox [(ngModel)]="options.requireInteraction">Require Interaction</mat-checkbox>
+  </div>
+</div>

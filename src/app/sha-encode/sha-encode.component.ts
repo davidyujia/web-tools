@@ -6,11 +6,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-sha-encode',
-  standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, TextFieldModule, MatSelectModule],
-  templateUrl: './sha-encode.component.html',
-  styleUrl: './sha-encode.component.scss'
+    selector: 'app-sha-encode',
+    imports: [FormsModule, MatFormFieldModule, MatInputModule, TextFieldModule, MatSelectModule],
+    templateUrl: './sha-encode.component.html',
+    styleUrl: './sha-encode.component.scss'
 })
 export class ShaEncodeComponent {
   algorithm = 'SHA-512';

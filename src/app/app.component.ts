@@ -9,11 +9,10 @@ import { MatListModule } from '@angular/material/list';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, RouterModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatButtonModule, MatListModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [RouterOutlet, RouterModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatButtonModule, MatListModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
 }

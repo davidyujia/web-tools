@@ -17,6 +17,13 @@
       <a mat-list-item routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive"
         [routerLink]="item.route">{{item.name}}</a>
       }
+      <h3>Browser</h3>
+      @for (item of [
+      { route: ['/', 'browser-notification-api'] , name:'Notification API'},
+      ]; track item){
+      <a mat-list-item routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive"
+        [routerLink]="item.route">{{item.name}}</a>
+      }
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
