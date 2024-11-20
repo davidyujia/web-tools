@@ -26,31 +26,35 @@ export class BrowserNotificationApiComponent {
     }
   }
   title: string = '';
-  options: {
-    body?: string,
-    icon?: string,
-    tag?: string,
-    requireInteraction: boolean
-  } = {
-      body: undefined,
-      icon: undefined,
-      tag: undefined,
-      requireInteraction: false
-    };
+  options: NotificationOptions = {
+    body: undefined,
+    icon: undefined,
+    tag: undefined,
+    requireInteraction: false
+  };
 
   notify?: Notification;
   notificationTest() {
     Notification.requestPermission().then((result) => {
       this.check();
       this.notificationClose();
+
+      let options = {} as any;
+      Object.keys(this.options).forEach(key => {
+        if ((this.options as any)[key] != undefined) {
+          options[key] = (this.options as any)[key];
+        }
+      });
       if (result == 'granted') {
-        this.notify = new Notification(this.title, this.options);
+        this.notify = new Notification(this.title, options);
         this.notify.onclick = (e) => {
           e.preventDefault(); // prevent the browser from focusing the Notification's tab
           focus();
           this.notificationClose();
         }
       }
+      options.title = this.title;
+      console.log(options);
     });
   }
   notificationClose() {
