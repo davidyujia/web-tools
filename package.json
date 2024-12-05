@@ -1,13 +1,13 @@
 {
   "name": "web-tools",
-  "version": "0.0.0",
+  "version": "1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "page": "ng build --base-href /web-tools/"
+    "page": "node ./replace.build.mjs && ng build --base-href /web-tools/"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +37,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "replace-in-file": "^8.2.0",
     "typescript": "~5.5.2"
   }
 }

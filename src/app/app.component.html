@@ -24,6 +24,13 @@
       <a mat-list-item routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive"
         [routerLink]="item.route">{{item.name}}</a>
       }
+      <h3>Other</h3>
+      @for (item of [
+      { route: ['/', 'info'] , name:'Info'},
+      ]; track item){
+      <a mat-list-item routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive"
+        [routerLink]="item.route">{{item.name}}</a>
+      }
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
