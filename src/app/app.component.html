@@ -27,6 +27,7 @@
       <h3>Other</h3>
       @for (item of [
       { route: ['/', 'info'] , name:'Info'},
+      { route: ['/', 'connection-string-generator'], name: 'Connection String Generator' }
       ]; track item){
       <a mat-list-item routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive"
         [routerLink]="item.route">{{item.name}}</a>

@@ -43,6 +43,12 @@ export const routes: Routes = [
     children: []
   },
   {
+    path: 'connection-string-generator',
+    title: titleFormat('Connection String Generator'),
+    loadComponent: () => import('./connection-string-generator/connection-string-generator.component').then(m => m.ConnectionStringGeneratorComponent),
+    children: []
+  },
+  {
     path: '',
     title: titleFormat(''),
     component: HomeComponent,
