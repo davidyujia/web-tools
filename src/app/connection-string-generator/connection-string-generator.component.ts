@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,7 +25,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
   templateUrl: './connection-string-generator.component.html',
   styleUrl: './connection-string-generator.component.scss'
 })
-export class ConnectionStringGeneratorComponent {
+export class ConnectionStringGeneratorComponent implements OnInit, DoCheck {
   dbType: string = 'mssql';
   host: string = '';
   port: number | null = null;
@@ -52,6 +52,15 @@ export class ConnectionStringGeneratorComponent {
     if (this.keyValues.length > 1) {
       this.keyValues.splice(index, 1);
     }
+  }
+
+  // 只要 keyValues 有變動就自動產生連線字串
+  ngOnInit() {
+    this.generateConnectionString();
+  }
+
+  ngDoCheck() {
+    this.generateConnectionString();
   }
 
   // 將所有特殊字元進行 escape，符合 connection string 規格
