@@ -110,9 +110,9 @@ export class ConnectionStringGeneratorComponent implements OnInit, DoCheck {
   copyToClipboard(text?: string) {
     const value = text ?? this.connectionString;
     if (this.clipboard.copy(value)) {
-      this.snackBar.open('已複製到剪貼簿', '關閉', {
+      this.snackBar.open('Copied to clipboard', 'Close', {
         duration: 1500,
-        verticalPosition: 'bottom', // 調整為畫面下方
+        verticalPosition: 'bottom', // Show at the bottom of the screen
         panelClass: ['copy-success-snackbar']
       });
     }
