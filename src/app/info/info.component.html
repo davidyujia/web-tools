@@ -1,7 +1,30 @@
 <H1>Browser & Application Info</H1>
 <!-- <div> {{version | date:'yyMMddHHmm':'GMT'}} </div> -->
 <div> {{version}} </div>
-<div> {{info}} </div>
-<div> {{browser}} </div>
-
-<div> {{platform}} </div>
+<div>
+  <strong>Info:</strong>
+  <table>
+    <tr *ngFor="let item of info | keyvalue">
+      <td style="text-align: right; white-space: nowrap;">{{item.key}}:</td>
+      <td>{{item.value}}</td>
+    </tr>
+  </table>
+</div>
+<div>
+  <strong>Browser:</strong>
+  <table>
+    <tr *ngFor="let item of browser | keyvalue">
+      <td style="text-align: right; white-space: nowrap;">{{item.key}}:</td>
+      <td>{{item.value}}</td>
+    </tr>
+  </table>
+</div>
+<div>
+  <strong>Platform:</strong>
+  <table>
+    <tr *ngFor="let item of platform | keyvalue">
+      <td style="text-align: right; white-space: nowrap;">{{item.key}}:</td>
+      <td>{{item.value}}</td>
+    </tr>
+  </table>
+</div>

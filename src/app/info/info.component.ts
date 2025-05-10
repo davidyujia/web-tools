@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-info',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './info.component.html',
   styleUrl: './info.component.scss'
 })
@@ -14,9 +15,9 @@ export class InfoComponent {
   browser: any;
   platform: any;
   ngOnInit() {
-    this.info = JSON.stringify(this.getBrowserInfo());
-    this.browser = JSON.stringify(this.getBrowserInfo2());
-    this.platform = JSON.stringify(detectPlatform());
+    this.info = this.getBrowserInfo();
+    this.browser = this.getBrowserInfo2();
+    this.platform = detectPlatform();
   }
 
   getBrowserInfo() {
