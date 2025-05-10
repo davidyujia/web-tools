@@ -12,37 +12,38 @@
           <mat-label>Value</mat-label>
           <input matInput [(ngModel)]="kv.value" name="value{{i}}" required />
         </mat-form-field>
-        <button mat-icon-button color="warn" type="button" (click)="removeKeyValue(i)" [disabled]="keyValues.length === 1">
+        <button mat-icon-button color="warn" type="button" (click)="removeKeyValue(i)"
+          [disabled]="keyValues.length === 1">
           <mat-icon>remove_circle</mat-icon>
         </button>
       </div>
       <button mat-stroked-button color="primary" type="button" (click)="addKeyValue()">
-        <mat-icon>add</mat-icon> 新增欄位
+        <mat-icon>add</mat-icon> Add Field
       </button>
     </form>
-    <div *ngIf="connectionString" class="result">
-      <mat-label>產生的連線字串：</mat-label>
+    <div class="result">
+      <mat-label>Generated Connection String:</mat-label>
       <mat-form-field appearance="fill" class="connection-string-output">
         <input matInput [value]="connectionString" readonly />
-        <button mat-icon-button matSuffix (click)="copyToClipboard()" [cdkCopyToClipboard]="connectionString">
+        <button mat-icon-button matSuffix (click)="copyToClipboard(connectionString)">
           <mat-icon>content_copy</mat-icon>
         </button>
       </mat-form-field>
     </div>
-    <div *ngIf="jsonString" class="result">
-      <mat-label>JSON 格式：</mat-label>
+    <div class="result">
+      <mat-label>JSON Format:</mat-label>
       <mat-form-field appearance="fill" class="connection-string-output">
         <textarea matInput [value]="jsonString" readonly rows="6"></textarea>
-        <button mat-icon-button matSuffix (click)="copyToClipboard()" [cdkCopyToClipboard]="jsonString">
+        <button mat-icon-button matSuffix (click)="copyToClipboard(jsonString)">
           <mat-icon>content_copy</mat-icon>
         </button>
       </mat-form-field>
     </div>
-    <div *ngIf="jsonConnectionString" class="result">
-      <mat-label>ConnectingStrings JSON：</mat-label>
+    <div class="result">
+      <mat-label>ConnectingStrings JSON:</mat-label>
       <mat-form-field appearance="fill" class="connection-string-output">
         <textarea matInput [value]="jsonConnectionString" readonly rows="6"></textarea>
-        <button mat-icon-button matSuffix (click)="copyToClipboard()" [cdkCopyToClipboard]="jsonConnectionString">
+        <button mat-icon-button matSuffix (click)="copyToClipboard(jsonConnectionString)">
           <mat-icon>content_copy</mat-icon>
         </button>
       </mat-form-field>

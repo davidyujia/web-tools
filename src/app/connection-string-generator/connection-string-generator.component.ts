@@ -7,7 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { ClipboardModule } from '@angular/cdk/clipboard';
+import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
+import { MatSnackBar, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-connection-string-generator',
@@ -20,10 +21,14 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     MatSelectModule,
     MatIconModule,
     CommonModule,
-    ClipboardModule
+    ClipboardModule,
+    MatSnackBarModule
   ],
   templateUrl: './connection-string-generator.component.html',
-  styleUrl: './connection-string-generator.component.scss'
+  styleUrl: './connection-string-generator.component.scss',
+  providers: [
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1500, verticalPosition: 'top' } }
+  ]
 })
 export class ConnectionStringGeneratorComponent implements OnInit, DoCheck {
   dbType: string = 'mssql';
@@ -43,6 +48,8 @@ export class ConnectionStringGeneratorComponent implements OnInit, DoCheck {
     { key: 'User Id', value: '' },
     { key: 'Password', value: '' }
   ];
+
+  constructor(private clipboard: Clipboard, private snackBar: MatSnackBar) {}
 
   addKeyValue() {
     this.keyValues.push({ key: '', value: '' });
@@ -80,13 +87,15 @@ export class ConnectionStringGeneratorComponent implements OnInit, DoCheck {
   }
 
   generateConnectionString() {
-    this.connectionString = this.keyValues
-      .filter(kv => kv.key.trim() !== '')
-      .map(kv => `${kv.key}=${this.escapeValue(kv.value)}`)
-      .join(';') + ';';
+    const filtered = this.keyValues.filter(kv => kv.key.trim() !== '');
+    if (filtered.length > 0) {
+      this.connectionString = filtered.map(kv => `${kv.key}=${this.escapeValue(kv.value)}`).join(';') + ';';
+    } else {
+      this.connectionString = '';
+    }
     // 產生 key-value JSON 格式
     const obj: Record<string, string> = {};
-    this.keyValues.filter(kv => kv.key.trim() !== '').forEach(kv => {
+    filtered.forEach(kv => {
       obj[kv.key] = kv.value;
     });
     this.jsonString = JSON.stringify(obj, null, 2);
@@ -98,7 +107,14 @@ export class ConnectionStringGeneratorComponent implements OnInit, DoCheck {
     }, null, 2);
   }
 
-  copyToClipboard() {
-    // 這個方法由 [cdkCopyToClipboard] 處理, 這裡可留空或加提示
+  copyToClipboard(text?: string) {
+    const value = text ?? this.connectionString;
+    if (this.clipboard.copy(value)) {
+      this.snackBar.open('已複製到剪貼簿', '關閉', {
+        duration: 1500,
+        verticalPosition: 'bottom', // 調整為畫面下方
+        panelClass: ['copy-success-snackbar']
+      });
+    }
   }
 }
